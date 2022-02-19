@@ -59,6 +59,10 @@ namespace DeckWebV2
         {
             return webview2;
         }
+        public void OpenTaskManagerWindow()
+        {
+            this.webview2.CoreWebView2.OpenTaskManagerWindow();
+        }
 
     }
 }

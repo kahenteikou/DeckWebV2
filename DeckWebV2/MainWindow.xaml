@@ -23,6 +23,11 @@
                     <Fluent:Button Header="ホーム" KeyTip="H" x:Name="HomeBT" Click="HomeBT_Click"></Fluent:Button>
                 </Fluent:RibbonGroupBox>
             </Fluent:RibbonTabItem>
+            <Fluent:RibbonTabItem Header="ツール" KeyTip="T">
+                <Fluent:RibbonGroupBox Header="">
+                    <Fluent:Button Header="タスクマネージャー" KeyTip="T" x:Name="TaskMgrBT" Click="TaskMgrBT_Click"></Fluent:Button>
+                </Fluent:RibbonGroupBox>
+            </Fluent:RibbonTabItem>
             
         </Fluent:Ribbon>
     </DockPanel>
