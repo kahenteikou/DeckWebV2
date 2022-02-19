@@ -19,7 +19,8 @@
             </Fluent:Ribbon.Menu>
             <Fluent:RibbonTabItem Header="表示" KeyTip="V">
                 <Fluent:RibbonGroupBox Header="" KeyTip="V">
-                    <Fluent:Button Header="再読み込み" KeyTip="R"></Fluent:Button>
+                    <Fluent:Button Header="再読み込み" KeyTip="R" x:Name="Reload_BT" Click="Reload_BT_Click"></Fluent:Button>
+                    <Fluent:Button Header="ホーム" KeyTip="H" x:Name="HomeBT" Click="HomeBT_Click"></Fluent:Button>
                 </Fluent:RibbonGroupBox>
             </Fluent:RibbonTabItem>
             

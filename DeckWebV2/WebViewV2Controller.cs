@@ -33,8 +33,6 @@ namespace DeckWebV2
         }
         private async void CoreWebView2_NavigationStarting(object sender, CoreWebView2NavigationStartingEventArgs e)
         {
-            var uri = new Uri(e.Uri);
-            Debug.WriteLine(uri);
             if (tw_ptkun.IsMatch(e.Uri))
             {
                 

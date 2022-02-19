@@ -25,7 +25,9 @@ namespace DeckWebV2
         public MainWindow()
         {
             InitializeComponent();
-            Quit_BT.Icon = iconlib.getIcon_Small("imageres.dll", 161);
+            Quit_BT.Icon = iconlib.getIcon_Large("imageres.dll", 161);
+            Reload_BT.Icon = iconlib.getIcon_Large("wmploc.dll", 132);
+            HomeBT.Icon = iconlib.getIcon_Large("inetcpl.cpl", 0);
             wv2Controller.PageTitleChanged += (sender, e) => this.Title = e;
             this.DockPanelkun.Children.Add(wv2Controller.getWebView());
             wv2Controller.Navigate("https://tweetdeck.twitter.com/");
@@ -34,6 +36,17 @@ namespace DeckWebV2
         private void Quit_BT_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void Reload_BT_Click(object sender, RoutedEventArgs e)
+        {
+            wv2Controller.Reload();
+        }
+
+        private void HomeBT_Click(object sender, RoutedEventArgs e)
+        {
+
+            wv2Controller.Navigate("https://tweetdeck.twitter.com/");
         }
     }
 }
