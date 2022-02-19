@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="Fluent.Ribbon" Version="9.0.3" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1108.44" />
   </ItemGroup>
 
 </Project>
