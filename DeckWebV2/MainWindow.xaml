@@ -1,4 +1,4 @@
-﻿<Fluent:RibbonWindow xmlns:Wpf="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"   x:Class="DeckWebV2.MainWindow"
+﻿<Fluent:RibbonWindow x:Class="DeckWebV2.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -19,6 +19,5 @@
             </Fluent:RibbonTabItem>
             
         </Fluent:Ribbon>
-        <Wpf:WebView2 DockPanel.Dock="Bottom" x:Name="MainWebView"/>
     </DockPanel>
 </Fluent:RibbonWindow>
