@@ -25,8 +25,15 @@ namespace DeckWebV2
         public MainWindow()
         {
             InitializeComponent();
+            Quit_BT.Icon = iconlib.getIcon_Small("imageres.dll", 161);
+            wv2Controller.PageTitleChanged += (sender, e) => this.Title = e;
             this.DockPanelkun.Children.Add(wv2Controller.getWebView());
             wv2Controller.Navigate("https://tweetdeck.twitter.com/");
+        }
+
+        private void Quit_BT_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

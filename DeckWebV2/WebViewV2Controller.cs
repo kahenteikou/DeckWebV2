@@ -24,7 +24,12 @@ namespace DeckWebV2
             if (e.IsSuccess)
             {
                 webview2.CoreWebView2.NavigationStarting += this.CoreWebView2_NavigationStarting;
+                webview2.CoreWebView2.DocumentTitleChanged += this.CoreWebView2_DocumentTitleChanged;
             }
+        }
+        public void Reload()
+        {
+            webview2.Reload();
         }
         private async void CoreWebView2_NavigationStarting(object sender, CoreWebView2NavigationStartingEventArgs e)
         {
@@ -47,6 +52,10 @@ namespace DeckWebV2
                 await webview2.EnsureCoreWebView2Async();
             }
             webview2.CoreWebView2.Navigate(uri);
+        }
+        private void CoreWebView2_DocumentTitleChanged(object sender,object e22)
+        {
+            this.PageTitleChanged?.Invoke(this,this.webview2.CoreWebView2.DocumentTitle);
         }
         public Microsoft.Web.WebView2.Wpf.WebView2 getWebView()
         {

@@ -1,21 +1,26 @@
-﻿<Fluent:RibbonWindow x:Class="DeckWebV2.MainWindow"
+﻿<Fluent:RibbonWindow 
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="DeckWebV2.MainWindow"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:Fluent="urn:fluent-ribbon"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DeckWebV2"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <DockPanel x:Name="DockPanelkun">
+    <DockPanel x:Name="DockPanelkun" >
         <Fluent:Ribbon DockPanel.Dock="Top">
-            <Fluent:RibbonTabItem Header="Main" KeyTip="M">
-                <Fluent:RibbonGroupBox Header="Main3" KeyTip="N">
-                    <Fluent:Button Header="Close" KeyTip="I"></Fluent:Button>
+            <Fluent:Ribbon.QuickAccessItems>
+            </Fluent:Ribbon.QuickAccessItems>
+            <Fluent:Ribbon.Menu>
+                <Fluent:ApplicationMenu Header="ファイル">
+                    <Fluent:MenuItem Header="終了" KeyTip="Q" x:Name="Quit_BT" Click="Quit_BT_Click"></Fluent:MenuItem>
+                </Fluent:ApplicationMenu>
+            </Fluent:Ribbon.Menu>
+            <Fluent:RibbonTabItem Header="表示" KeyTip="V">
+                <Fluent:RibbonGroupBox Header="" KeyTip="V">
+                    <Fluent:Button Header="再読み込み" KeyTip="R"></Fluent:Button>
                 </Fluent:RibbonGroupBox>
-            </Fluent:RibbonTabItem>
-            <Fluent:RibbonTabItem Header="View" KeyTip="V">
-                
             </Fluent:RibbonTabItem>
             
         </Fluent:Ribbon>
