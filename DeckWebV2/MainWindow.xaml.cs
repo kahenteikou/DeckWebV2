@@ -21,9 +21,12 @@ namespace DeckWebV2
     /// </summary>
     public partial class MainWindow : RibbonWindow
     {
+        private readonly WebViewV2Controller wv2Controller = new();
         public MainWindow()
         {
             InitializeComponent();
+            this.DockPanelkun.Children.Add(wv2Controller.getWebView());
+            wv2Controller.Navigate("https://www.google.com");
         }
     }
 }

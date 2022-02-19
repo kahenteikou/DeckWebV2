@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:DeckWebV2"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <DockPanel>
+    <DockPanel x:Name="DockPanelkun">
         <Fluent:Ribbon DockPanel.Dock="Top">
             <Fluent:RibbonTabItem Header="Main" KeyTip="M">
                 <Fluent:RibbonGroupBox Header="Main3" KeyTip="N">
