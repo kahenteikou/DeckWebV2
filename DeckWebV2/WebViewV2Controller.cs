@@ -17,6 +17,7 @@ namespace DeckWebV2
         public WebViewV2Controller()
         {
             webview2.CoreWebView2InitializationCompleted += this.CoreWebView2Initialization;
+            webview2.DefaultBackgroundColor = System.Drawing.ColorTranslator.FromHtml("#1DA1F2");
         }
         private void CoreWebView2Initialization(object sender, CoreWebView2InitializationCompletedEventArgs e)
         {
