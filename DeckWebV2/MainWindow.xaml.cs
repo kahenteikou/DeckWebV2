@@ -26,7 +26,7 @@ namespace DeckWebV2
         {
             InitializeComponent();
             this.DockPanelkun.Children.Add(wv2Controller.getWebView());
-            wv2Controller.Navigate("https://www.google.com");
+            wv2Controller.Navigate("https://tweetdeck.twitter.com/");
         }
     }
 }
