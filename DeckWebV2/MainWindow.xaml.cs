@@ -29,6 +29,7 @@ namespace DeckWebV2
             Reload_BT.Icon = iconlib.getIcon_Large("wmploc.dll", 132);
             HomeBT.Icon = iconlib.getIcon_Large("inetcpl.cpl", 0);
             TaskMgrBT.Icon = iconlib.getIcon_Large("pifmgr.dll", 0);
+            DevtoolBT.Icon = iconlib.getIcon_Large("pifmgr.dll", 5);
             wv2Controller.PageTitleChanged += (sender, e) => this.Title = e;
             this.DockPanelkun.Children.Add(wv2Controller.getWebView());
             wv2Controller.Navigate("https://tweetdeck.twitter.com/");
@@ -53,6 +54,11 @@ namespace DeckWebV2
         private void TaskMgrBT_Click(object sender, RoutedEventArgs e)
         {
             wv2Controller.OpenTaskManagerWindow();
+        }
+
+        private void DevtoolBT_Click(object sender, RoutedEventArgs e)
+        {
+            wv2Controller.OpenDevToolsWindow();
         }
     }
 }

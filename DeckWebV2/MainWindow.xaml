@@ -26,6 +26,8 @@
             <Fluent:RibbonTabItem Header="ツール" KeyTip="T">
                 <Fluent:RibbonGroupBox Header="">
                     <Fluent:Button Header="タスクマネージャー" KeyTip="T" x:Name="TaskMgrBT" Click="TaskMgrBT_Click"></Fluent:Button>
+                    <Fluent:Button Header="Develop Tool" KeyTip="D" x:Name="DevtoolBT" Click="DevtoolBT_Click"></Fluent:Button>
+
                 </Fluent:RibbonGroupBox>
             </Fluent:RibbonTabItem>
             

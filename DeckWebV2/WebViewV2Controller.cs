@@ -63,6 +63,9 @@ namespace DeckWebV2
         {
             this.webview2.CoreWebView2.OpenTaskManagerWindow();
         }
-
+        public void OpenDevToolsWindow()
+        {
+            webview2.CoreWebView2.OpenDevToolsWindow();
+        }
     }
 }
