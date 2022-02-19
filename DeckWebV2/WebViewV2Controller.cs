@@ -13,6 +13,7 @@ namespace DeckWebV2
     {
         private Regex tw_ptkun = new Regex(@"^https:\/\/(.+\.)?twitter\.com\/.*", RegexOptions.Compiled);
         private Microsoft.Web.WebView2.Wpf.WebView2 webview2=new Microsoft.Web.WebView2.Wpf.WebView2();
+        public event EventHandler<string> PageTitleChanged;
         public WebViewV2Controller()
         {
             webview2.CoreWebView2InitializationCompleted += this.CoreWebView2Initialization;
