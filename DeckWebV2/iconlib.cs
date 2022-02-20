@@ -21,7 +21,7 @@ namespace DeckWebV2
         /// <param name="icons">I don't know that.</param>
         /// <returns>Error Code?</returns>
         [DllImport("shell32.dll", EntryPoint = "ExtractIconEx", CharSet = CharSet.Unicode)]
-        public static extern int ExtractIconEx([MarshalAs(UnmanagedType.LPTStr)] string file, int index, out IntPtr largeIconHandle, out IntPtr smallIconHandle, int icons);
+        private static extern int ExtractIconEx([MarshalAs(UnmanagedType.LPTStr)] string file, int index, out IntPtr largeIconHandle, out IntPtr smallIconHandle, int icons);
         /// <summary>
         /// Icon destroy
         /// </summary>
