@@ -48,6 +48,11 @@ namespace DeckWebV2
                         builder.AddText(je.GetString());
 
                 }
+                {
+                    JsonElement je;
+                    if(e.Optionsje.TryGetProperty("icon",out je))
+                        builder.AddAppLogoOverride(new Uri(je.GetString()));
+                }
                 builder.Show();
 
             };

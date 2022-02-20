@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Web.WebView2.Core;
 using System.Text.RegularExpressions;
+using System.IO;
 
 namespace DeckWebV2
 {
@@ -21,13 +22,13 @@ namespace DeckWebV2
         {
             webview2.CoreWebView2InitializationCompleted += this.CoreWebView2Initialization;
             notificationJSCSkun.showNotificationed += (sender, e) => this.showNotificationed?.Invoke(sender, e);
-            webview2.DefaultBackgroundColor = System.Drawing.ColorTranslator.FromHtml("#1DA1F2");
+            webview2.DefaultBackgroundColor = System.Drawing.ColorTranslator.FromHtml("#1DA1F2"); 
         }
         private void CoreWebView2PermissionRequested(object sender, CoreWebView2PermissionRequestedEventArgs e)
         {
             PermissionRequested?.Invoke(this, e);
         }
-        private void CoreWebView2Initialization(object sender, CoreWebView2InitializationCompletedEventArgs e)
+        private async void CoreWebView2Initialization(object sender, CoreWebView2InitializationCompletedEventArgs e)
         {
             //None
             if (e.IsSuccess)
@@ -36,6 +37,10 @@ namespace DeckWebV2
                 webview2.CoreWebView2.DocumentTitleChanged += this.CoreWebView2_DocumentTitleChanged;
                 webview2.CoreWebView2.PermissionRequested += this.PermissionRequested;
                 webview2.CoreWebView2.AddHostObjectToScript("NotificationCustom", notificationJSCSkun);
+                string scriptGetSrc = File.ReadAllText(".\\injection.js");
+                string src = await webview2.ExecuteScriptAsync(scriptGetSrc);
+                Debug.Print(src);
+
             }
         }
         public void Reload()

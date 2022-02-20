@@ -14,4 +14,10 @@
     <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1108.44" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="injection.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
