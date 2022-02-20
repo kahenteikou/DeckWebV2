@@ -1,4 +1,5 @@
 ﻿using Fluent;
+using Microsoft.Toolkit.Uwp.Notifications;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +37,14 @@ namespace DeckWebV2
 
                 this.Icon = System.Windows.Media.Imaging.BitmapFrame.Create(streamkun);
             }
+            wv2Controller.showNotificationed += (sender, e) =>
+            {
+                new ToastContentBuilder()
+                .AddText(e.Title)
+                .AddText(e.Optionsje.GetProperty("body").GetString())
+                .Show();
+
+            };
             wv2Controller.PageTitleChanged += (sender, e) => this.Title = e;
             this.DockPanelkun.Children.Add(wv2Controller.getWebView());
             wv2Controller.Navigate("https://tweetdeck.twitter.com/");

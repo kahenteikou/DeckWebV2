@@ -27,13 +27,13 @@ namespace DeckWebV2
             _title = title;
             if (optionsj == "")
             {
-                _optionsje = new JsonElement();
+                _optionsje = new JsonElement().Clone();
             }
             else
             {
                 using(JsonDocument doc = JsonDocument.Parse(optionsj))
                 {
-                    _optionsje = doc.RootElement;
+                    _optionsje = doc.RootElement.Clone();
                 }
             }
         }
