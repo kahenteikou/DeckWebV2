@@ -14,10 +14,16 @@ namespace DeckWebV2
         private Regex tw_ptkun = new Regex(@"^https:\/\/(.+\.)?twitter\.com\/.*", RegexOptions.Compiled);
         private Microsoft.Web.WebView2.Wpf.WebView2 webview2=new Microsoft.Web.WebView2.Wpf.WebView2();
         public event EventHandler<string> PageTitleChanged;
+        public event EventHandler<CoreWebView2PermissionRequestedEventArgs> PermissionRequested;
         public WebViewV2Controller()
         {
             webview2.CoreWebView2InitializationCompleted += this.CoreWebView2Initialization;
+            
             webview2.DefaultBackgroundColor = System.Drawing.ColorTranslator.FromHtml("#1DA1F2");
+        }
+        private void CoreWebView2PermissionRequested(object sender, CoreWebView2PermissionRequestedEventArgs e)
+        {
+            PermissionRequested?.Invoke(this, e);
         }
         private void CoreWebView2Initialization(object sender, CoreWebView2InitializationCompletedEventArgs e)
         {
@@ -26,6 +32,7 @@ namespace DeckWebV2
             {
                 webview2.CoreWebView2.NavigationStarting += this.CoreWebView2_NavigationStarting;
                 webview2.CoreWebView2.DocumentTitleChanged += this.CoreWebView2_DocumentTitleChanged;
+                webview2.CoreWebView2.PermissionRequested += this.PermissionRequested;
             }
         }
         public void Reload()
