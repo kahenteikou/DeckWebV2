@@ -21,7 +21,8 @@ namespace DeckWebV2
             webview2.CoreWebView2InitializationCompleted += this.CoreWebView2Initialization;
             notificationJSCSkun.showNotificationed += (sender, e) =>
             {
-                
+                Debug.Print(e.Optionj);
+                Debug.Print(e.Title);
             };
             webview2.DefaultBackgroundColor = System.Drawing.ColorTranslator.FromHtml("#1DA1F2");
         }

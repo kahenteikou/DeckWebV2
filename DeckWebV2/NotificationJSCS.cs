@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace DeckWebV2
@@ -10,27 +11,41 @@ namespace DeckWebV2
     public class ShowNotificationEventArgs:EventArgs
     {
         private string _title;
-        private string _optionsj;
+        private JsonElement _optionsje;
         public string Title
         {
             get { return _title; }
             set { _title = value; }
         }
-        public string Optionj
+        public JsonElement Optionsje
         {
-            get { return _optionsj; }
-            set { _optionsj = value; }
+            get { return _optionsje; }
+            set { _optionsje = value; }
         }
         public ShowNotificationEventArgs(string title,string optionsj) : base()
         {
             _title = title;
-            _optionsj = optionsj;
+            if (optionsj == "")
+            {
+                _optionsje = new JsonElement();
+            }
+            else
+            {
+                using(JsonDocument doc = JsonDocument.Parse(optionsj))
+                {
+                    _optionsje = doc.RootElement;
+                }
+            }
+        }
+        public ShowNotificationEventArgs(string title,JsonElement optj) : base()
+        {
+            _title=title;
+            _optionsje = optj;
         }
 
     }
     public interface INotificationJSCS
     {
-        void showNotification(string title);
         void showNotification(string title,string optionsj);
 
     }
@@ -39,11 +54,6 @@ namespace DeckWebV2
     public class NotificationJSCS : INotificationJSCS
     {
         public event EventHandler<ShowNotificationEventArgs> showNotificationed;
-
-        public void showNotification(string title)
-        {
-            showNotificationed?.Invoke(this,new ShowNotificationEventArgs(title,""));
-        }
 
         public void showNotification(string title, string optionsj)
         {
