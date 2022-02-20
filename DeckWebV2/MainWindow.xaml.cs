@@ -30,6 +30,12 @@ namespace DeckWebV2
             HomeBT.Icon = iconlib.getIcon_Large("inetcpl.cpl", 0);
             TaskMgrBT.Icon = iconlib.getIcon_Large("pifmgr.dll", 0);
             DevtoolBT.Icon = iconlib.getIcon_Large("pifmgr.dll", 5);
+            {
+                System.IO.MemoryStream streamkun = new System.IO.MemoryStream();
+                (iconlib.getIcon_Large("cttune.exe", 0) as System.Drawing.Icon).Save(streamkun);
+
+                this.Icon = System.Windows.Media.Imaging.BitmapFrame.Create(streamkun);
+            }
             wv2Controller.PageTitleChanged += (sender, e) => this.Title = e;
             this.DockPanelkun.Children.Add(wv2Controller.getWebView());
             wv2Controller.Navigate("https://tweetdeck.twitter.com/");
