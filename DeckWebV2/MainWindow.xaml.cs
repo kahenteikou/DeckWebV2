@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -39,10 +40,15 @@ namespace DeckWebV2
             }
             wv2Controller.showNotificationed += (sender, e) =>
             {
-                new ToastContentBuilder()
-                .AddText(e.Title)
-                .AddText(e.Optionsje.GetProperty("body").GetString())
-                .Show();
+                var builder = new ToastContentBuilder()
+                .AddText(e.Title);
+                {
+                    JsonElement je;
+                    if (e.Optionsje.TryGetProperty("body",out je))
+                        builder.AddText(je.GetString());
+
+                }
+                builder.Show();
 
             };
             wv2Controller.PageTitleChanged += (sender, e) => this.Title = e;
