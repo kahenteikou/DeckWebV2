@@ -15,10 +15,14 @@ namespace DeckWebV2
         private Microsoft.Web.WebView2.Wpf.WebView2 webview2=new Microsoft.Web.WebView2.Wpf.WebView2();
         public event EventHandler<string> PageTitleChanged;
         public event EventHandler<CoreWebView2PermissionRequestedEventArgs> PermissionRequested;
+        private NotificationJSCS notificationJSCSkun=new NotificationJSCS();
         public WebViewV2Controller()
         {
             webview2.CoreWebView2InitializationCompleted += this.CoreWebView2Initialization;
-            
+            notificationJSCSkun.showNotificationed += (sender, e) =>
+            {
+                
+            };
             webview2.DefaultBackgroundColor = System.Drawing.ColorTranslator.FromHtml("#1DA1F2");
         }
         private void CoreWebView2PermissionRequested(object sender, CoreWebView2PermissionRequestedEventArgs e)
@@ -33,6 +37,7 @@ namespace DeckWebV2
                 webview2.CoreWebView2.NavigationStarting += this.CoreWebView2_NavigationStarting;
                 webview2.CoreWebView2.DocumentTitleChanged += this.CoreWebView2_DocumentTitleChanged;
                 webview2.CoreWebView2.PermissionRequested += this.PermissionRequested;
+                webview2.CoreWebView2.AddHostObjectToScript("NotificationCustom", notificationJSCSkun);
             }
         }
         public void Reload()
