@@ -50,7 +50,6 @@ namespace DeckWebV2
         {
             wv2Controller.Reload();
         }
-
         private void HomeBT_Click(object sender, RoutedEventArgs e)
         {
 
