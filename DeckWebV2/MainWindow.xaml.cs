@@ -2,6 +2,7 @@
 using Microsoft.Toolkit.Uwp.Notifications;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
@@ -50,8 +51,11 @@ namespace DeckWebV2
                 }
                 {
                     JsonElement je;
-                    if(e.Optionsje.TryGetProperty("icon",out je))
-                        builder.AddAppLogoOverride(new Uri(je.GetString()));
+                    if (e.Optionsje.TryGetProperty("icon", out je))
+                    {
+
+                    }
+                    
                 }
                 builder.Show();
 

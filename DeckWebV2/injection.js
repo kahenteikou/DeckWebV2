@@ -5,8 +5,13 @@
 }
 Notification = function (title, options) {
     var optionskun = options;
-    if (options.icon != null) {
+    if (options == undefined) {
+        optionskun = {}
+    }
+    if (options?.icon == undefined) {
+    } else {
         optionskun.icon = abstrans_234553(options.icon);
+        console.log(optionskun.icon);
     }
     chrome.webview.hostObjects.NotificationCustom.showNotification(title, JSON.stringify(optionskun));
 };
@@ -18,3 +23,4 @@ Notification.requestPermission = function () {
         resolve('granted');
     });
 };
+console.log("loaded!")

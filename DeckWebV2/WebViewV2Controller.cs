@@ -18,8 +18,10 @@ namespace DeckWebV2
         public event EventHandler<CoreWebView2PermissionRequestedEventArgs> PermissionRequested;
         public event EventHandler<ShowNotificationEventArgs> showNotificationed;
         private NotificationJSCS notificationJSCSkun=new NotificationJSCS();
+        private string scriptGetSrc;
         public WebViewV2Controller()
         {
+            scriptGetSrc = File.ReadAllText(".\\injection.js");
             webview2.CoreWebView2InitializationCompleted += this.CoreWebView2Initialization;
             notificationJSCSkun.showNotificationed += (sender, e) => this.showNotificationed?.Invoke(sender, e);
             webview2.DefaultBackgroundColor = System.Drawing.ColorTranslator.FromHtml("#1DA1F2"); 
@@ -34,18 +36,23 @@ namespace DeckWebV2
             if (e.IsSuccess)
             {
                 webview2.CoreWebView2.NavigationStarting += this.CoreWebView2_NavigationStarting;
+                webview2.CoreWebView2.NavigationCompleted += this.CoreWebView2_NavigationCompleted;
                 webview2.CoreWebView2.DocumentTitleChanged += this.CoreWebView2_DocumentTitleChanged;
                 webview2.CoreWebView2.PermissionRequested += this.PermissionRequested;
                 webview2.CoreWebView2.AddHostObjectToScript("NotificationCustom", notificationJSCSkun);
-                string scriptGetSrc = File.ReadAllText(".\\injection.js");
-                string src = await webview2.ExecuteScriptAsync(scriptGetSrc);
-                Debug.Print(src);
 
             }
         }
         public void Reload()
         {
             webview2.Reload();
+        }
+        private async void CoreWebView2_NavigationCompleted(object sender,CoreWebView2NavigationCompletedEventArgs e)
+        {
+
+            
+            string src = await webview2.CoreWebView2.ExecuteScriptAsync(scriptGetSrc);
+            Debug.Print(src);
         }
         private async void CoreWebView2_NavigationStarting(object sender, CoreWebView2NavigationStartingEventArgs e)
         {
